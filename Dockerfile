@@ -3,35 +3,31 @@ FROM node:18 AS build
 
 WORKDIR /app
 
-# Copia os arquivos package.json e yarn.lock
+# Copia os arquivos package.json e yarn.lock para instalar as dependências
 COPY package*.json yarn.lock ./
 
 # Instala as dependências
 RUN yarn install
 
-# Copia o restante dos arquivos
+# Copia todo o código fonte
 COPY . .
 
-# Compila o TypeScript
-RUN yarn build
+# Gera os arquivos compilados (opcional, depende da estrutura do projeto)
+RUN yarn tsc
 
 # Etapa 2: Execução
 FROM node:18-alpine
 
 WORKDIR /app
 
-# Copia os arquivos compilados para o container
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/package*.json /app/yarn.lock ./
+# Copia os arquivos necessários da fase de build
+COPY --from=build /app ./
 
-# Instala somente as dependências de produção
+# Instala apenas as dependências de produção
 RUN yarn install --production
 
-# Copia o arquivo de banco de dados SQLite (caso ele já exista)
-COPY --from=build /app/database.sqlite ./database.sqlite
-
-# Porta de exposição
+# Expõe a porta em que a aplicação será executada
 EXPOSE 3000
 
-# Comando para executar as migrações e iniciar a aplicação
-CMD ["yarn", "knex:migrate:latest", "&&", "yarn", "start"]
+# Comando para rodar as migrações e iniciar o servidor
+CMD ["yarn", "knex:migrate", "&&", "yarn", "start"]
