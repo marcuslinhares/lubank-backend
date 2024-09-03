@@ -1,7 +1,7 @@
 {
   "name": "lubank",
   "version": "0.0.1",
-  "main": "dist/index.js", /* Atualizado para o diretório de saída */
+  "main": "dist/index.js",
   "repository": "https://github.com/lvsouza/fbank-backend.git",
   "author": "lvsouza",
   "license": "MIT",
@@ -39,8 +39,8 @@
     "@types/jsonwebtoken": "^8.5.0",
     "jest": "^26.4.2",
     "ts-jest": "^26.3.0",
-    "ts-node": "^10.4.0", /* Atualizado para uma versão mais recente */
-    "ts-node-dev": "^1.1.8", /* Atualizado para uma versão mais recente */
-    "typescript": "^4.8.4" /* Atualizado para uma versão mais recente */
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.8.4"
   }
 }
