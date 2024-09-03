@@ -1,17 +1,27 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    "target": "es5", /* Specify ECMAScript target version: 'ES5' */
-    "module": "commonjs", /* Corrigido para 'commonjs' */
+    "target": "es6", /* Atualize para ES6 para aproveitar recursos modernos do JavaScript */
+    "module": "commonjs", /* Continue usando CommonJS */
     
     /* Strict Type-Checking Options */
     "strict": true, /* Enable all strict type-checking options. */
     
     /* Module Resolution Options */
-    "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules. */
+    "skipLibCheck": true, /* Skip type checking of declaration files. */
     
     /* Advanced Options */
-    "skipLibCheck": true, /* Skip type checking of declaration files. */
-    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
-  }
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+    
+    /* Output Options */
+    "outDir": "./dist", /* Diretório de saída para os arquivos compilados */
+    "rootDir": "./src" /* Diretório raiz dos arquivos de entrada */
+  },
+  "include": [
+    "src/**/*.ts" /* Inclua todos os arquivos TypeScript no diretório src */
+  ],
+  "exclude": [
+    "node_modules" /* Exclua node_modules da compilação */
+  ]
 }

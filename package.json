@@ -1,20 +1,20 @@
 {
   "name": "lubank",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "dist/index.js", /* Atualizado para o diretório de saída */
   "repository": "https://github.com/lvsouza/fbank-backend.git",
   "author": "lvsouza",
   "license": "MIT",
   "scripts": {
     "jest:test": "jest",
     "jest:watch": "jest --watchAll",
-    "knex:seed": "knex --knexfile knexfile.ts seed:run",
-    "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
-    "knex:rollback-last": "knex --knexfile knexfile.ts migrate:rollback",
-    "knex:rollback-all": "knex --knexfile knexfile.ts migrate:rollback --all",
-    "dev": "ts-node-dev --respawn --ignore-watch node_modules --no-notify src/server.ts",
+    "knex:seed": "ts-node knex --knexfile knexfile.ts seed:run",
+    "knex:migrate": "ts-node knex --knexfile knexfile.ts migrate:latest",
+    "knex:rollback-last": "ts-node knex --knexfile knexfile.ts migrate:rollback",
+    "knex:rollback-all": "ts-node knex --knexfile knexfile.ts migrate:rollback --all",
+    "start": "ts-node-dev --respawn --ignore-watch node_modules --no-notify src/server.ts",
     "build": "tsc",
-    "start": "yarn build && ts-node-dev --respawn --ignore-watch node_modules --no-notify dist/server.js"
+    "start:prod": "yarn build && node dist/server.js"
   },
   "private": true,
   "dependencies": {
@@ -39,8 +39,8 @@
     "@types/jsonwebtoken": "^8.5.0",
     "jest": "^26.4.2",
     "ts-jest": "^26.3.0",
-    "ts-node": "^8.10.2",
-    "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.9.5"
+    "ts-node": "^10.4.0", /* Atualizado para uma versão mais recente */
+    "ts-node-dev": "^1.1.8", /* Atualizado para uma versão mais recente */
+    "typescript": "^4.8.4" /* Atualizado para uma versão mais recente */
   }
 }
